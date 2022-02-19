@@ -10,10 +10,11 @@ class hello(Package):
 
         chdir("build")
         run_cmd("ls", "../")
-        run_cmd("../hello-2.7/configure")
+        run_cmd("../hello-2.7/configure", "--prefix=/tmp/hello-test")
 
     def compile(self):
         run_cmd("make")
 
     def post_compile(self):
+        run_cmd("chmod", "+x", "../hello-2.7/build-aux/install-sh") # Fix issue in install :/
         run_cmd("make", "install")
