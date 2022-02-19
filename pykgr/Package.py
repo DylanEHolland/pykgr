@@ -2,6 +2,7 @@ from pykgr.util.Crypto import hash_string
 
 class Package(object):
     env = None
+    dependencies = {}
 
     def __init__(self, env):
         self.env = env

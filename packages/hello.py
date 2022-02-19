@@ -1,6 +1,9 @@
 class hello(Package):
     source_tarball = "https://ftp.gnu.org/gnu/hello/hello-2.7.tar.xz"
 
+    def compile(self):
+        run_cmd("make")
+
     def pre_compile(self):
         if not exists("build"):
             mkdir("build")
@@ -11,9 +14,6 @@ class hello(Package):
         chdir("build")
         run_cmd("ls", "../")
         run_cmd("../hello-2.7/configure", "--prefix=/tmp/hello-test")
-
-    def compile(self):
-        run_cmd("make")
 
     def post_compile(self):
         run_cmd("chmod", "+x", "../hello-2.7/build-aux/install-sh") # Fix issue in install :/

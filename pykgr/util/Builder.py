@@ -16,6 +16,6 @@ def build_from_class(script_file_name, env):
 
     create_recursive_directory(package.build_directory())
     chdir(package.build_directory())
+    
     extract_source_from_url(package.source_tarball)
-
     package.build()
