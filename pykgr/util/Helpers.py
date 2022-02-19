@@ -2,6 +2,7 @@ from os.path import exists
 from os import mkdir
 import subprocess
 
+
 def create_recursive_directory(dir_path):
     whole_path = "";
     for subdir in dir_path.split("/"):

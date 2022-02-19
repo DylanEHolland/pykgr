@@ -6,6 +6,7 @@ from os.path import exists
 from os import chdir, mkdir
 from os.path import exists
 
+
 def build_from_class(script_file_name, env):
     package_class = get_class_from_file(script_file_name)
     package = package_class(env)

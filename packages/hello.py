@@ -16,4 +16,4 @@ class hello(Package):
         run_cmd("make")
 
     def post_compile(self):
-        run_cmd("sudo", "make", "install")
+        run_cmd("make", "install")
