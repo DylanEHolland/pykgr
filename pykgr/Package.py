@@ -14,7 +14,7 @@ class Package(object):
 
     @classmethod
     def build_directory(cls):
-        directory = f"/tmp/pykgr/build/{cls.__name__}-{hash_string(cls.source_tarball)}"
+        directory = f"/tmp/pykgr/build/{cls.__name__}-{cls.hash_name()}"
 
         if(directory == "/"): raise PermissionError("Trying to delete ROOT")
         return directory
@@ -22,6 +22,14 @@ class Package(object):
     def compile(self):
         # Should be overwritten
         pass
+    
+    @classmethod
+    def hash_name(cls):
+        return hash_string(cls.source_tarball)
+
+    @classmethod
+    def installation_dir(cls):
+        return f"/opt/pykgr/builds/{cls.__name__}/{cls.hash_name()}"
 
     def post_compile(self):
         # Should be overwritten
