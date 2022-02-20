@@ -1,5 +1,6 @@
 from os.path import exists, basename
 from pykgr.Package import Package
+from pykgr import config as Config
 
 # This is the scope for package files, include stuff to be used there below
 from pykgr.util.Helpers import run_cmd

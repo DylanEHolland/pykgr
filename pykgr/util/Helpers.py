@@ -1,19 +1,20 @@
 from os.path import exists
 from os import mkdir
 import subprocess
+from pykgr import config
 
 
 def create_filesystem():
     directories = ["bin", "etc"]
-    if not exists("/opt/pykgr"):
+    if not exists(config.directory):
         print("Please create /opt/pykgr and set it's owner to your user")
         exit(-1)
 
-    if not exists("/opt/pykgr/system"):
-        create_recursive_directory("/opt/pykgr/system")
+    if not exists(config.system_directory):
+        create_recursive_directory(config.system_directory)
 
     for d in directories:
-        subdir = f"/opt/pykgr/system/{d}"
+        subdir = f"{config.system_directory}/{d}"
         if not exists(subdir):
             create_recursive_directory(subdir)
 

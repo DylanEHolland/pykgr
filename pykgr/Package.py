@@ -1,4 +1,5 @@
 from pykgr.util.Crypto import hash_string
+from pykgr import config
 
 class Package(object):
     env = None
@@ -29,7 +30,7 @@ class Package(object):
 
     @classmethod
     def installation_dir(cls):
-        return f"/opt/pykgr/builds/{cls.__name__}/{cls.hash_name()}"
+        return f"{config.build_directory}/{cls.__name__}/{cls.hash_name()}"
 
     def post_compile(self):
         # Should be overwritten
