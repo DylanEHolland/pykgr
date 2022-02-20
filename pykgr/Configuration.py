@@ -4,7 +4,7 @@ from re import findall as findall
 configuration_dict = {
     "directory": "/opt/pykgr",
     "system_directory": "{directory}/system",
-    "build_directory": ""
+    "build_directory": "{directory}/builds"
 }
 
 class Configuration(object):

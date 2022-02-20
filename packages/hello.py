@@ -18,4 +18,8 @@ class hello(Package):
         run_cmd("chmod", "+x", "../hello-2.7/build-aux/install-sh") # Fix issue in install :/
         run_cmd("make", "install")
 
-        print(self.installation_dir(), f"{Config.system_directory}/bin")
+    def link_files(self):
+        run_cmd("ln", "-sv", f"{self.installation_dir()}/bin/hello", f"{Config.system_directory}/bin")
+
+    def unlink_files(self):
+        run_cmd("rm", f"{Config.system_directory}/bin/hello")

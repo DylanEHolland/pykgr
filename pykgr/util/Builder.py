@@ -19,5 +19,5 @@ def build_from_class(script_file_name, env):
     chdir(package.build_directory())
     
     extract_source_from_url(package.source_tarball)
-    
+
     package.build()

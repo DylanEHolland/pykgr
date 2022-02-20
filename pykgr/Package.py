@@ -12,6 +12,7 @@ class Package(object):
         self.pre_compile()
         self.compile()
         self.post_compile()
+        self.link_files()
 
     @classmethod
     def build_directory(cls):
@@ -32,6 +33,10 @@ class Package(object):
     def installation_dir(cls):
         return f"{config.build_directory}/{cls.__name__}/{cls.hash_name()}"
 
+    def link_files(self):
+        # Should be overwritten
+        pass
+
     def post_compile(self):
         # Should be overwritten
         pass
@@ -42,3 +47,10 @@ class Package(object):
     def pre_compile(self):
         # Should be overwritten
         pass
+
+    def unlink_files(self):
+        # Should be overwritten
+        pass
+
+    def unbuild(self):
+        self.unlink_files()
